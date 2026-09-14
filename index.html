@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Canvas SVG измененный вариант</title>
+</head>
+
+<body>
+    <svg id="volchok" width="140" height="140">
+        <circle cx="70" cy="70" r="70" fill="red"></circle>
+        <circle cx="70" cy="70" r="60" fill="orange"></circle>
+        <circle cx="70" cy="70" r="50" fill="yellow"></circle>
+        <circle cx="70" cy="70" r="40" fill="green"></circle>
+        <circle cx="70" cy="70" r="30" fill="cyan"></circle>
+        <circle cx="70" cy="70" r="20" fill="blue"></circle>
+        <circle cx="70" cy="70" r="10" fill="purple"></circle>
+
+
+        <rect fill="green" height="70" width="5" x="70" y="70"></rect>
+    </svg>
+
+    <script>
+        function rotate() {
+            spinning = true;
+            if (speed <= 0) {
+                spinning = false;
+                return;
+            }
+            speed -= 0.5;
+            angle = (angle + speed);
+            var rot = 'rotate(' + angle + ', 0, 0)';
+            circle.setAttribute('transform', rot);
+            requestAnimationFrame(rotate);
+        }
+        function spin() {
+            speed += 55;
+            if (spinning == false) {
+                rotate();
+            }
+        }
+        function stop() {
+            speed = 0;
+        }
+
+        function timerr() {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+                stop();
+            }
+            else {
+                timer = setTimeout(timeoutfunc,200)
+            }
+        }
+        function timeoutfunc() {
+            clearTimeout(timer);
+            timer = null;
+            spin();
+        }
+
+
+        const circle = document.getElementById('volchok');
+        var angle = 0;
+        var speed = 25;
+        var spinning = false;
+        var timer = null;
+
+        circle.addEventListener('click', timerr);
+
+      </script>
+
+</body>
+
+
+</html>
