@@ -9,7 +9,7 @@
         font-size: 100px;
     }
     </style>
-}
+
 </head>
 
 <body>
@@ -27,55 +27,7 @@
         <rect fill="green" height="70" width="5" x="70" y="70"></rect>
     </svg>
 
-    <script>
-        function rotate() {
-            spinning = true;
-            if (speed <= 0) {
-                spinning = false;
-                return;
-            }
-            speed -= 0.5;
-            angle = (angle + speed);
-            var rot = 'rotate(' + angle + ', 0, 0)';
-            circle.setAttribute('transform', rot);
-            requestAnimationFrame(rotate);
-        }
-        function spin() {
-            speed += 55;
-            if (spinning == false) {
-                rotate();
-            }
-        }
-        function stop() {
-            speed = 0;
-        }
 
-        function timerr() {
-            if (timer) {
-                clearTimeout(timer);
-                timer = null;
-                stop();
-            }
-            else {
-                timer = setTimeout(timeoutfunc,200)
-            }
-        }
-        function timeoutfunc() {
-            clearTimeout(timer);
-            timer = null;
-            spin();
-        }
-
-
-        const circle = document.getElementById('volchok');
-        var angle = 0;
-        var speed = 25;
-        var spinning = false;
-        var timer = null;
-
-        circle.addEventListener('click', timerr);
-
-      </script>
 
 </body>
 
